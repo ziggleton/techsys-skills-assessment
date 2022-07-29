@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { user } from 'ng-heroicon';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-user-list',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
-    console.log('hello Im loaded');
+    this.userService.getUsers().subscribe((items) => {
+      console.log(items);
+    });
   }
 }
