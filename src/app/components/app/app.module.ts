@@ -10,24 +10,8 @@ import { UsersModule } from '../pages/users/users.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { SideNavComponent } from '../side-nav/side-nav.component';
-import { UsersComponent } from '../pages/users/users.component';
-
-const appRoutes: Routes = [
-  {
-    path: 'users',
-    component: UsersComponent,
-  },
-  { path: '**', component: UsersComponent },
-];
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SideNavComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     FormsModule,
     BrowserModule,
@@ -43,7 +27,6 @@ const appRoutes: Routes = [
         attachDefaultDimensionsIfNoneFound: true,
       }
     ),
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
