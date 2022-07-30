@@ -1,0 +1,66 @@
+.grid {
+  height: 100%;
+  width: 100%;
+  border: 0.0625rem solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+
+  .grid-head {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    border-bottom: 0.0625rem solid var(--border);
+
+    .grid-head-cell {
+      background-color: var(--white);
+      display: block;
+      height: 100%;
+      line-height: 4rem;
+      flex: 1;
+      padding: 0 1rem;
+      text-transform: capitalize;
+      font-weight: 500;
+      color: var(--primary-text);
+      &:first-of-type,
+      &:last-of-type {
+        flex: none;
+        min-width: 150px;
+      }
+    }
+  }
+
+  .grid-body {
+    background-color: var(--white);
+
+    .grid-body-row {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 0.0625rem solid var(--border);
+      transition: all ease-in-out 0.3s;
+      &.clickable {
+        pointer-events: all;
+      }
+      &:hover {
+        background-color: var(--base);
+        color: var(--primary-text);
+        cursor: pointer;
+      }
+    }
+
+    .cell {
+      height: inherit;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex: 1;
+      padding: 0 1rem;
+      &:first-of-type,
+      &:last-of-type {
+        flex: none;
+        min-width: 150px;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div class="grid">
+  <div class="grid-head">
+    <div class="grid-head-cell" *ngFor="let header of gridHeaders">
+      {{ header }}
+    </div>
+  </div>
+  <div class="grid-body">
+    <div
+      class="grid-body-row"
+      *ngFor="let item of gridItems"
+      (click)="showPreview(item)"
+    >
+      <div class="cell">
+        <app-avatar
+          [avatarSize]="'small'"
+          [imageSrc]="item.profileImage"
+        ></app-avatar>
+      </div>
+      <div class="cell">
+        {{ item.userName }}
+      </div>
+      <div class="cell">
+        {{ item.userType }}
+      </div>
+      <div class="cell">
+        <hero-icon
+          [name]="'dots-horizontal'"
+          [type]="'outline'"
+          [class]="'icon'"
+        ></hero-icon>
+      </div>
+    </div>
+  </div>
+</div>
