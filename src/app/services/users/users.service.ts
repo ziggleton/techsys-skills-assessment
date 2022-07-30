@@ -3,27 +3,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 export interface User {
+  id: number;
   userName: string;
   userType: string;
   profileImage: string;
-  fullName: string;
-  bio: string;
-  followers: number;
-  following: number;
-  repos: number;
-  gists: number;
+  fullName?: string;
+  bio?: string;
+  followers?: number;
+  following?: number;
+  repos?: number;
+  gists?: number;
 }
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export default class UsersService {
   private ghUrl = 'https://api.github.com/users';
-  userList: User[] = [];
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
+  getUsers() {
     return this.http.get<User[]>(this.ghUrl);
+  }
+  getUser(username: string) {
+    return this.http.get<User[]>(`${this.ghUrl}/${username}`);
   }
   // searchUsers: Observable<User[]> = (username: string) => {
   //   console.log(username);
