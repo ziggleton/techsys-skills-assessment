@@ -1,0 +1,17 @@
+<div class="app-preview">
+  <header>
+    <span>{{ user?.fullName || user?.userName }}</span>
+    <hero-icon
+      [name]="'x'"
+      [type]="'outline'"
+      class="icon"
+      (click)="closePreview()"
+    ></hero-icon>
+  </header>
+  <div class="preview-body">
+    <app-avatar
+      [avatarSize]="'large'"
+      [imageSrc]="user?.profileImage"
+    ></app-avatar>
+  </div>
+</div>

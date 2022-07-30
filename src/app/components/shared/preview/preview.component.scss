@@ -1,0 +1,20 @@
+.app-preview {
+  height: auto;
+  border: 0.0625rem solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--white);
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  padding: 1rem;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.icon {
+  cursor: pointer;
+}
