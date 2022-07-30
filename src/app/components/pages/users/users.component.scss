@@ -1,0 +1,23 @@
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 0px;
+  margin: 1rem;
+  .main {
+    grid-area: 1 / 1 / 2 / 7;
+  }
+  .aside {
+    visibility:hidden;
+  }
+  &.show-preview {
+    .main {
+      grid-area: 1 / 1 / 3 / 6;
+    }
+    .aside {
+      visibility: visible;
+      grid-area: 1 / 6 / 3 / 7;
+    }
+  }
+}

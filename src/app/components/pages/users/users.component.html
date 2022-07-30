@@ -1,3 +1,11 @@
-<p>
-  <app-user-list></app-user-list>
-</p>
+<div class="user-grid" [ngClass]="{ 'show-preview': canShowPreview }">
+  <div class="main">
+    <app-user-list [users]="users" [headers]="headers"></app-user-list>
+  </div>
+  <div class="aside">
+    <app-preview
+      *ngIf="canShowPreview"
+      [selectedItem]="selectedItem"
+    ></app-preview>
+  </div>
+</div>
