@@ -13,17 +13,17 @@
   border-radius: 50%;
 
   &.small {
-    background-color: red;
+    background-color: var(--base);
     height: 32px;
     width: 32px;
   }
   &.medium {
-    background-color: blue;
+    background-color: var(--base);
     height: 3rem;
     width: 3rem;
   }
   &.large {
-    background-color: green;
+    background-color: var(--base);
     height: 6rem;
     width: 6rem;
   }
