@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { allIcons, HeroIconModule } from 'ng-heroicon';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UsersModule } from '../pages/users/users.module';
 
