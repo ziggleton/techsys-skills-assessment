@@ -34,6 +34,7 @@ export interface Gist {
   name: string;
   pullUrl: string;
   pushUrl: string;
+  public: boolean;
   url: string;
 }
 @Injectable({
