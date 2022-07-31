@@ -38,24 +38,158 @@
       </div>
     </div>
     <div class="repos wrappers">
-      <header>
+      <header class="wrapper-header">
         <app-title [text]="'repository list'"></app-title>
+        <a [routerLink]="['../../repos/', user?.userName]" class="button-link">
+          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
+          <span>repos</span>
+        </a>
       </header>
+      <div class="wrapper-body">
+        <div class="wrapper-body-headers">
+          <span class="cell">title</span>
+          <span class="cell">full name</span>
+          <span class="cell">private</span>
+          <span class="cell">link</span>
+        </div>
+        <div class="list-item">
+          <div *ngFor="let repo of user?.repoList" class="row">
+            <span class="cell">
+              {{ repo.name }}
+            </span>
+            <span class="cell">
+              {{ repo.fullName }}
+            </span>
+            <span class="cell">
+              {{ repo.private }}
+            </span>
+            <span class="cell">
+              <a href="{{ repo.url }}">
+                <hero-icon
+                  [name]="'link'"
+                  [type]="'outline'"
+                  class="icon"
+                ></hero-icon>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="gists wrappers">
-      <header>
+      <header class="wrapper-header">
         <app-title [text]="'gist list'"></app-title>
+        <a [routerLink]="['../../gists/', user?.userName]" class="button-link">
+          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
+          <span>gists</span>
+        </a>
       </header>
+      <div class="wrapper-body">
+        <div class="wrapper-body-headers">
+          <span class="cell">title</span>
+          <span class="cell">pull url</span>
+          <span class="cell">push url</span>
+          <span class="cell">public</span>
+          <span class="cell">link</span>
+        </div>
+        <div class="list-item">
+          <div *ngFor="let gist of user?.gistList" class="row">
+            <span class="cell">
+              {{ gist.name }}
+            </span>
+            <span class="cell">
+              {{ gist.pullUrl }}
+            </span>
+            <span class="cell">
+              {{ gist.pushUrl }}
+            </span>
+            <span class="cell">
+              {{ gist.public }}
+            </span>
+            <span class="cell">
+              <a href="{{ gist.url }}">
+                <hero-icon
+                  [name]="'link'"
+                  [type]="'outline'"
+                  class="icon"
+                ></hero-icon>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="followers wrappers">
-      <header>
+      <header class="wrapper-header">
         <app-title [text]="'followers'"></app-title>
       </header>
+      <div class="wrapper-body">
+        <div class="list-item-users">
+          <div *ngFor="let follower of user?.followersList" class="row">
+            <span class="user-cell">
+              <app-avatar
+                [avatarSize]="'small'"
+                [imageSrc]="follower.profileImage"
+              ></app-avatar>
+            </span>
+            <span class="user-cell">
+              {{ follower.userName }}
+            </span>
+            <span class="user-cell">
+              {{ follower.userType }}
+            </span>
+            <span class="user-cell">
+              <a
+                [routerLink]="['../../details', follower?.userName]"
+                class="button-link"
+              >
+                <hero-icon
+                  [name]="'eye'"
+                  [type]="'outline'"
+                  class="icon"
+                ></hero-icon>
+                <span>profile</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="following wrappers">
-      <header>
+      <header class="wrapper-header">
         <app-title [text]="'following'"></app-title>
       </header>
+      <div class="wrapper-body">
+        <div class="list-item-users">
+          <div *ngFor="let following of user?.followingList" class="row">
+            <span class="user-cell">
+              <app-avatar
+                [avatarSize]="'small'"
+                [imageSrc]="following.profileImage"
+              ></app-avatar>
+            </span>
+            <span class="user-cell">
+              {{ following.userName }}
+            </span>
+            <span class="user-cell">
+              {{ following.userType }}
+            </span>
+            <span class="user-cell">
+              <a
+                [routerLink]="['../../details', following?.userName]"
+                class="button-link"
+              >
+                <hero-icon
+                  [name]="'eye'"
+                  [type]="'outline'"
+                  class="icon"
+                ></hero-icon>
+                <span>profile</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -26,12 +26,14 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.username = this.router.snapshot.paramMap.get('username')!;
-    this.fetchData(this.username);
+    this.router.paramMap.subscribe((params: any) => {
+      this.username = params.get('username')!;
+      this.fetchData(this.username!);
+    });
   }
 
   fetchData(username: string): void {
-    this.userService.getUser(this.username!).subscribe((user: any) => {
+    this.userService.getUser(username!).subscribe((user: any) => {
       this.user = {
         id: user.id,
         userName: user.login,
@@ -44,77 +46,65 @@ export class UserDetailsComponent implements OnInit {
         repos: user.public_repos,
         gists: user.public_gists,
       };
-      this.userService.getGists(this.username!).subscribe((gists: any) => {
+
+      this.userService.getGists(username!).subscribe((gists: any) => {
         gists.map((gist: any) => {
           this.gistList.push({
             id: gist.id,
-            name: gist.name,
+            name: gist.node_id,
             pullUrl: gist.git_pull_url,
             pushUrl: gist.git_push_url,
-            url: gist.url,
+            public: gist.public,
+            url: gist.html_url,
           });
         });
         if (this.user) {
           this.user.gistList = this.gistList!;
         }
       });
-      this.userService.getRepos(this.username!).subscribe((repos: any) => {
+
+      this.userService.getRepos(username!).subscribe((repos: any) => {
         repos.map((repo: any) => {
           this.repoList.push({
             id: repo.id,
             name: repo.name,
             fullName: repo.full_name,
             private: repo.private,
-            url: repo.url,
+            url: repo.html_url,
           });
         });
         if (this.user) {
           this.user.repoList = this.repoList!;
         }
       });
-      this.userService
-        .getFollowers(this.username!)
-        .subscribe((followers: any) => {
-          followers.map((follower: any) => {
-            this.followersList.push({
-              id: follower.id,
-              userName: follower.login,
-              userType: follower.type,
-              profileImage: follower.avatar_url,
-              fullName: follower.name,
-              bio: follower.bio,
-              followers: follower.followers,
-              following: follower.following,
-              repos: follower.public_repos,
-              gists: follower.public_gists,
-            });
-          });
-          if (this.user) {
-            this.user.followersList = this.followersList!;
-          }
-        });
 
-      this.userService
-        .getFollowing(this.username!)
-        .subscribe((followings: any) => {
-          followings.map((following: any) => {
-            this.followingList.push({
-              id: following.id,
-              userName: following.login,
-              userType: following.type,
-              profileImage: following.avatar_url,
-              fullName: following.name,
-              bio: following.bio,
-              followers: following.followers,
-              following: following.following,
-              repos: following.public_repos,
-              gists: following.public_gists,
-            });
+      this.userService.getFollowers(username!).subscribe((followers: any) => {
+        followers.map((follower: any) => {
+          this.followersList.push({
+            id: follower.id,
+            userName: follower.login,
+            userType: follower.type,
+            profileImage: follower.avatar_url,
           });
-          if (this.user) {
-            this.user.followingList = this.followingList!;
-          }
         });
+        if (this.user) {
+          this.user.followersList = this.followersList!;
+        }
+      });
+
+      this.userService.getFollowing(username!).subscribe((followings: any) => {
+        followings.map((following: any) => {
+          this.followingList.push({
+            id: following.id,
+            userName: following.login,
+            userType: following.type,
+            profileImage: following.avatar_url,
+          });
+        });
+        if (this.user) {
+          this.user.followingList = this.followingList!;
+        }
+      });
     });
   }
 
