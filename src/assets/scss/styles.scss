@@ -3,7 +3,7 @@
 :root {
   --white: rgba(255, 255, 255, 1);
   --base: rgb(248, 249, 251);
-  --border: rgb(240, 242, 247);
+  --border: rgb(226, 227, 231);
   --primary-text: rgba(9, 14, 36, 0775);
   --secondary-text: rgb(98, 110, 153);
 }
@@ -18,9 +18,102 @@ body {
   color: var(--secondary-text);
   font-size: 14px;
   user-select: none;
+  .application-wrapper {
+    height: inherit;
+  }
 }
 
 .icon {
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.inline-flex-row {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.button-link {
+  align-items: center;
+  display: inline-flex;
+  border-radius: 6px;
+  justify-content: center;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+  line-height: 1rem;
+  text-transform: capitalize;
+  height: 2rem;
+  width: auto;
+  user-select: none;
+  background-color: var(--base);
+  padding: 0.5rem;
+  .icon {
+    margin-right: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+  }
+  &::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    border: 0.0625rem solid var(--border);
+  }
+
+  &:hover {
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+      drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    color: var(--primary-text);
+    cursor: pointer;
+  }
+}
+
+.user-details {
+  margin: 1rem 0;
+  .user-name {
+    color: var(--primary-text);
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}
+
+.bio {
+  margin-bottom: 1rem;
+  padding: 1rem 0.5rem;
+  background-color: var(--base);
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+
+  .bio-text {
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
+}
+
+.repo-stats {
+  margin-bottom: 1rem;
+}
+
+.numbers {
+  color: var(--primary-text);
+  font-weight: 500;
+  margin-left: 0.5rem;
+  text-transform: capitalize;
+}
+
+.caption {
+  margin-left: 0.5rem;
+}
+
+.wrappers {
+  background-color: var(--white);
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  padding: 1rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
 }
