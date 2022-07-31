@@ -1,6 +1,6 @@
-<div class="app-preview">
+<div class="app-preview wrappers">
   <header>
-    <span>{{ user?.fullName || user?.userName }}</span>
+    <app-title [text]="'preview'"></app-title>
     <hero-icon
       [name]="'x'"
       [type]="'outline'"
@@ -13,5 +13,46 @@
       [avatarSize]="'large'"
       [imageSrc]="user?.profileImage"
     ></app-avatar>
+    <div class="user-details">
+      <p class="user-name">{{ user?.fullName }}</p>
+      <small>{{ user?.userName }}</small>
+    </div>
+    <div class="bio">
+      <span>
+        <span>Bio:</span>
+        <blockquote class="bio-text">{{ user?.bio }}</blockquote>
+      </span>
+    </div>
+    <div class="follow-stats inline-flex-row">
+      <hero-icon [name]="'user'" [type]="'solid'" class="icon"></hero-icon>
+      <span class="numbers">{{ user?.following }}</span
+      ><span class="caption">following</span>
+      <span class="numbers">{{ user?.followers }}</span
+      ><span class="caption">followers</span>
+    </div>
+
+    <div class="repo-stats">
+      <div class="repo-info inline-flex-row">
+        <hero-icon
+          [name]="'bookmark'"
+          [type]="'solid'"
+          class="icon"
+        ></hero-icon>
+        <span class="numbers">{{ user?.repos }}</span>
+        <span class="caption">Repos</span>
+        <span class="numbers">{{ user?.gists }}</span>
+        <span class="caption">Gists</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a
+      class="button-link"
+      [routerLink]="['details/', user?.userName]"
+    >
+      <hero-icon [name]="'user'" [type]="'solid'" class="icon"></hero-icon>
+      <span>profile</span>
+    </a>
   </div>
 </div>
