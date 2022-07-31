@@ -23,12 +23,10 @@
         {{ item.userType }}
       </div>
       <div class="cell">
-        <hero-icon
-          [name]="'eye'"
-          [type]="'outline'"
-          [class]="'icon'"
-        ></hero-icon>
-        <span>show preview</span>
+        <span class="button-link" (click)="showPreview(item)">
+          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
+          <span>preview</span>
+        </span>
       </div>
     </div>
   </div>
