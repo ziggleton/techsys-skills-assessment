@@ -14,6 +14,28 @@ export interface User {
   repos?: number;
   gists?: number;
 }
+
+export type ExtendedUserDetails = User & {
+  repoList?: Repo[];
+  gistList?: Gist[];
+  followersList?: User[];
+  followingList?: User[];
+};
+
+export interface Repo {
+  id: string | number;
+  name: string;
+  fullName: string;
+  private: boolean;
+  url: string;
+}
+export interface Gist {
+  id: string | number;
+  name: string;
+  pullUrl: string;
+  pushUrl: string;
+  url: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -25,23 +47,22 @@ export default class UsersService {
   getUsers() {
     return this.http.get<User[]>(this.ghUrl);
   }
+
   getUser(username: string) {
     return this.http.get<User[]>(`${this.ghUrl}/${username}`);
   }
-  // searchUsers: Observable<User[]> = (username: string) => {
-  //   console.log(username);
-  //   return <User[]>[];
-  // };
-  // getRepos: Observable<User[]> = (username: string) => {
-  //   return <User[]>[];
-  // };
-  // getGists: Observable<User[]> = (username: string) => {
-  //   return <User[]>[];
-  // };
-  // getFollowers: Observable<User[]> = (username: string) => {
-  //   return <User[]>[];
-  // };
-  // getFollowing: Observable<User[]> = (username: string) => {
-  //   return <User[]>[];
-  // };
+
+  getRepos(username: string) {
+    return this.http.get<Repo[]>(`${this.ghUrl}/${username}/repos`);
+  }
+
+  getGists(username: string) {
+    return this.http.get<Gist[]>(`${this.ghUrl}/${username}/gists`);
+  }
+  getFollowers(username: string) {
+    return this.http.get<User[]>(`${this.ghUrl}/${username}/followers`);
+  }
+  getFollowing(username: string) {
+    return this.http.get<User[]>(`${this.ghUrl}/${username}/following`);
+  }
 }
