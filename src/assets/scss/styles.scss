@@ -26,6 +26,7 @@ body {
 .icon {
   height: 1.5rem;
   width: 1.5rem;
+  color: var(--secondary-text);
 }
 
 .inline-flex-row {
@@ -50,6 +51,7 @@ body {
   user-select: none;
   background-color: var(--base);
   padding: 0.5rem;
+  text-decoration: none;
   .icon {
     margin-right: 0.5rem;
     height: 1rem;
@@ -116,4 +118,14 @@ body {
   border: 0.0625rem solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+}
+
+.wrapper-header {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 100%;
+  border-bottom: 0.0625rem solid var(--border);
 }
