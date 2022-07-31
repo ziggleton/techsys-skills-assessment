@@ -27,13 +27,19 @@ export class UsersComponent implements OnInit {
   ) {
     this.sub = this.uiService
       .onShowPreview()
-      .subscribe((val: boolean) => (this.canShowPreview = val));
+      .subscribe(
+        (val: boolean) => ((this.canShowPreview = val), this.fetchData())
+      );
     this.userSub = this.uiService
       .onSelectItem()
-      .subscribe((val: User) => (this.selectedItem = val));
+      .subscribe((val: User) => ((this.selectedItem = val), this.fetchData()));
   }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData(): void {
     this.userService.getUsers().subscribe((users: any) => {
       users.map((user: any) => {
         this.users.push({
