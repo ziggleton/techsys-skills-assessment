@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { allIcons, HeroIconModule } from 'ng-heroicon';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { AvatarComponent } from '../../shared/avatar/avatar.component';
 import { GridComponent } from '../../shared/grid/grid.component';
 import { PreviewComponent } from '../../shared/preview/preview.component';
+import { TitleComponent } from '../../shared/title/title.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { PreviewComponent } from '../../shared/preview/preview.component';
     UserListComponent,
     AvatarComponent,
     GridComponent,
-    PreviewComponent
+    PreviewComponent,
+    TitleComponent,
+    UserDetailsComponent,
   ],
   imports: [
     FormsModule,
@@ -29,6 +33,7 @@ import { PreviewComponent } from '../../shared/preview/preview.component';
         attachDefaultDimensionsIfNoneFound: true,
       }
     ),
+    RouterModule,
   ],
   providers: [],
   bootstrap: [UsersComponent],
