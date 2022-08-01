@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import UsersService, { Gist, Repo, User } from 'src/app/services/users/users.service';
+import UsersService, {
+  Gist,
+  Repo,
+  User,
+} from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-user-gists',
@@ -11,6 +15,8 @@ export class UserGistsComponent implements OnInit {
   private username: string | null = null;
   user: User | null = null;
   gistList: Gist[] = [];
+  headers: Array<string> = ['name', 'pull url', 'push url', 'public', 'link'];
+  Kind: String | null = 'Gist';
   constructor(
     private router: ActivatedRoute,
     private userService: UsersService
@@ -34,5 +40,13 @@ export class UserGistsComponent implements OnInit {
         });
       });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.username = null;
+    this.user = null;
+    this.gistList = [];
+    this.Kind = null;
+    this.headers = [];
   }
 }

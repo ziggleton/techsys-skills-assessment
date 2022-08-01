@@ -10,7 +10,9 @@ import UsersService, { User } from 'src/app/services/users/users.service';
 export class UserFollowingComponent implements OnInit {
   private username: string | null = null;
   user: User | null = null;
-  flollowingList: User[] = [];
+  followingList: User[] = [];
+  kind: String | null = 'Aux-User';
+  headers: Array<string> = ['profile image', 'id', 'username', 'user type'];
   constructor(
     private router: ActivatedRoute,
     private userService: UsersService
@@ -24,13 +26,21 @@ export class UserFollowingComponent implements OnInit {
   fetchData(username: string): void {
     this.userService.getFollowing(username).subscribe((following: any) => {
       following.map((follower: any) => {
-        this.flollowingList.push({
-          id: follower.id,
+        this.followingList.push({
+          id: follower.node_id,
           userName: follower.login,
           userType: follower.type,
           profileImage: follower.avatar_url,
         });
       });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.username = null;
+    this.user = null;
+    this.followingList = [];
+    this.kind = null;
+    this.headers = [];
   }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToggleService } from 'src/app/services';
-import { User } from 'src/app/services/users/users.service';
+import { Repo, User } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-grid',
@@ -8,9 +8,11 @@ import { User } from 'src/app/services/users/users.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-  @Input() gridItems: Array<any> = [];
-  @Input() gridHeaders: Array<string> = [];
-  constructor(private uiService: ToggleService) {}
+  @Input() gridItems?: User[] | Repo[] | any = [];
+  @Input() kind?: string| undefined;
+  @Input() gridHeaders?: Array<string> = [];
+  constructor(private uiService: ToggleService) {
+  }
 
   ngOnInit(): void {}
 

@@ -41,8 +41,12 @@
       <header class="wrapper-header">
         <app-title [text]="'repository list'"></app-title>
         <a [routerLink]="['../../repos/', user?.userName]" class="button-link">
-          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
-          <span>repos</span>
+          <hero-icon
+            [name]="'view-list'"
+            [type]="'outline'"
+            class="icon"
+          ></hero-icon>
+          <span>show repos</span>
         </a>
       </header>
       <div class="wrapper-body">
@@ -80,8 +84,12 @@
       <header class="wrapper-header">
         <app-title [text]="'gist list'"></app-title>
         <a [routerLink]="['../../gists/', user?.userName]" class="button-link">
-          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
-          <span>gists</span>
+          <hero-icon
+            [name]="'view-list'"
+            [type]="'outline'"
+            class="icon"
+          ></hero-icon>
+          <span>show gists</span>
         </a>
       </header>
       <div class="wrapper-body">
@@ -122,6 +130,17 @@
     <div class="followers wrappers">
       <header class="wrapper-header">
         <app-title [text]="'followers'"></app-title>
+        <a
+          [routerLink]="['../../followers/', user?.userName]"
+          class="button-link"
+        >
+          <hero-icon
+            [name]="'view-list'"
+            [type]="'outline'"
+            class="icon"
+          ></hero-icon>
+          <span>show followers</span>
+        </a>
       </header>
       <div class="wrapper-body">
         <div class="list-item-users">
@@ -144,7 +163,7 @@
                 class="button-link"
               >
                 <hero-icon
-                  [name]="'eye'"
+                  [name]="'user'"
                   [type]="'outline'"
                   class="icon"
                 ></hero-icon>
@@ -158,6 +177,17 @@
     <div class="following wrappers">
       <header class="wrapper-header">
         <app-title [text]="'following'"></app-title>
+        <a
+          [routerLink]="['../../following/', user?.userName]"
+          class="button-link"
+        >
+          <hero-icon
+            [name]="'view-list'"
+            [type]="'outline'"
+            class="icon"
+          ></hero-icon>
+          <span>show following</span>
+        </a>
       </header>
       <div class="wrapper-body">
         <div class="list-item-users">
@@ -180,7 +210,7 @@
                 class="button-link"
               >
                 <hero-icon
-                  [name]="'eye'"
+                  [name]="'user'"
                   [type]="'outline'"
                   class="icon"
                 ></hero-icon>

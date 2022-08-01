@@ -5,27 +5,98 @@
     </div>
   </div>
   <div class="grid-body">
-    <div
-      class="grid-body-row"
-      *ngFor="let item of gridItems"
-    >
-      <div class="cell">
-        <app-avatar
-          [avatarSize]="'small'"
-          [imageSrc]="item.profileImage"
-        ></app-avatar>
+    <div class="grid-scroll" *ngIf="kind == 'Aux-User'">
+      <div class="grid-body-row" *ngFor="let item of gridItems">
+        <div class="cell">
+          <app-avatar
+            [avatarSize]="'small'"
+            [imageSrc]="item.profileImage"
+          ></app-avatar>
+        </div>
+        <div class="cell">
+          {{ item?.id }}
+        </div>
+        <div class="cell">
+          {{ item?.userName }}
+        </div>
+        <div class="cell">
+          {{ item?.userType }}
+        </div>
       </div>
-      <div class="cell">
-        {{ item.userName }}
+    </div>
+    <div class="grid-scroll" *ngIf="kind == 'User'">
+      <div class="grid-body-row" *ngFor="let item of gridItems">
+        <div class="cell">
+          <app-avatar
+            [avatarSize]="'small'"
+            [imageSrc]="item.profileImage"
+          ></app-avatar>
+        </div>
+        <div class="cell">
+          {{ item?.userName }}
+        </div>
+        <div class="cell">
+          {{ item?.userType }}
+        </div>
+        <div class="cell">
+          <span class="button-link" (click)="showPreview(item)">
+            <hero-icon
+              [name]="'eye'"
+              [type]="'outline'"
+              class="icon"
+            ></hero-icon>
+            <span>preview</span>
+          </span>
+        </div>
       </div>
-      <div class="cell">
-        {{ item.userType }}
+    </div>
+    <div class="grid-scroll" *ngIf="kind == 'Repo'">
+      <div class="grid-body-row" *ngFor="let item of gridItems">
+        <div class="cell">
+          {{ item.name }}
+        </div>
+        <div class="cell">
+          {{ item.fullName }}
+        </div>
+        <div class="cell">
+          {{ item.private }}
+        </div>
+        <div class="cell">
+          <a class="button-link" [href]="item.url">
+            <hero-icon
+              [name]="'link'"
+              [type]="'outline'"
+              class="icon"
+            ></hero-icon>
+            <span>repo</span>
+          </a>
+        </div>
       </div>
-      <div class="cell">
-        <span class="button-link" (click)="showPreview(item)">
-          <hero-icon [name]="'eye'" [type]="'outline'" class="icon"></hero-icon>
-          <span>preview</span>
-        </span>
+    </div>
+    <div class="grid-scroll" *ngIf="kind == 'Gist'">
+      <div class="grid-body-row" *ngFor="let item of gridItems">
+        <div class="cell">
+          {{ item.name }}
+        </div>
+        <div class="cell">
+          {{ item?.pullUrl }}
+        </div>
+        <div class="cell">
+          {{ item?.pushUrl }}
+        </div>
+        <div class="cell">
+          {{ item?.public }}
+        </div>
+        <div class="cell">
+          <a class="button-link" href="{{ item.url }}">
+            <hero-icon
+              [name]="'link'"
+              [type]="'outline'"
+              class="icon"
+            ></hero-icon>
+            <span>preview</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

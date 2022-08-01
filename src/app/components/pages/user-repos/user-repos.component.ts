@@ -12,12 +12,8 @@ export class UserReposComponent implements OnInit {
   username: string | null = null;
   user: User | null = null;
   repoList: Repo[] = [];
-  headers: Array<string> = [
-    'profile image',
-    'username',
-    'user type',
-    'actions',
-  ];
+  kind: String | null = 'Repo';
+  headers: Array<string> = ['title', 'full url', 'public', 'link'];
   constructor(
     private router: ActivatedRoute,
     private userService: UsersService
@@ -36,9 +32,16 @@ export class UserReposComponent implements OnInit {
           name: repo.name,
           fullName: repo.full_name,
           private: repo.private,
-          url: repo.url,
+          url: repo.html_url,
         });
       });
     });
+  }
+  ngOnDestroy(): void {
+    this.username = null;
+    this.user = null;
+    this.repoList = [];
+    this.kind = null;
+    this.headers = [];
   }
 }

@@ -7,6 +7,7 @@ import { User } from 'src/app/services/users/users.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
+  kind: string = 'User';
   @Input() users: User[] = [];
   @Input() headers: Array<string> = [];
 

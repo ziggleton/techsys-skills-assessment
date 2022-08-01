@@ -1,1 +1,7 @@
-<p>user-repos works!</p>
+<div class="user-repo-list">
+  <app-grid
+    [gridHeaders]="headers"
+    [kind]="'Repo'"
+    [gridItems]="repoList"
+  ></app-grid>
+</div>

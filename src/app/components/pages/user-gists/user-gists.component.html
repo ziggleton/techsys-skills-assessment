@@ -1,1 +1,7 @@
-<p>user-gists works!</p>
+<div class="user-gist-list">
+  <app-grid
+    [gridHeaders]="headers"
+    [kind]="'Gist'"
+    [gridItems]="gistList"
+  ></app-grid>
+</div>

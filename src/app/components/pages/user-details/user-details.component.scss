@@ -36,11 +36,12 @@
     .cell {
       flex: 1;
       text-transform: capitalize;
-      max-width: 250px;
       font-weight: 500;
+      max-width: 250px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding: 1rem 0;
       color: var(--primary-text);
       &:last-of-type {
         max-width: 5rem;
@@ -56,7 +57,7 @@
   }
 
   .list-item {
-    margin-top: 30px;
+    margin-top: 56px;
     height: auto;
   }
 
@@ -78,6 +79,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 0.5rem;
     .user-cell {
       width: 180px;
       padding: 0 1rem;

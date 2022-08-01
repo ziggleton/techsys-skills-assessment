@@ -11,6 +11,8 @@ export class UserFollowersComponent implements OnInit {
   private username: string | null = null;
   user: User | null = null;
   followersList: User[] = [];
+  kind: String | null = 'Aux-User';
+  headers: Array<string> = ['profile image', 'id', 'username', 'user type'];
   constructor(
     private router: ActivatedRoute,
     private userService: UsersService
@@ -25,12 +27,20 @@ export class UserFollowersComponent implements OnInit {
     this.userService.getFollowers(username!).subscribe((followers: any) => {
       followers.map((follower: any) => {
         this.followersList.push({
-          id: follower.id,
+          id: follower.node_id,
           userName: follower.login,
           userType: follower.type,
           profileImage: follower.avatar_url,
         });
       });
     });
+  }
+  
+  ngOnDestroy(): void {
+    this.username = null;
+    this.user = null;
+    this.followersList = [];
+    this.kind = null;
+    this.headers = [];
   }
 }

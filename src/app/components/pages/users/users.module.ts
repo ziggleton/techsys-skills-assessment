@@ -1,3 +1,4 @@
+import { UserReposComponent } from './../user-repos/user-repos.component';
 import { UserListComponent } from '../../shared/user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,11 @@ import { GridComponent } from '../../shared/grid/grid.component';
 import { PreviewComponent } from '../../shared/preview/preview.component';
 import { TitleComponent } from '../../shared/title/title.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
+import { CommonModule } from '@angular/common';
+import { UserGistsComponent } from '../user-gists/user-gists.component';
+import { UserFollowingComponent } from '../user-following/user-following.component';
+import { UserFollowersComponent } from '../user-followers/user-followers.component';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +26,15 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
     PreviewComponent,
     TitleComponent,
     UserDetailsComponent,
+    UserReposComponent,
+    UserGistsComponent,
+    UserFollowersComponent,
+    UserFollowingComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    CommonModule,
     HeroIconModule.withIcons(
       {
         ...allIcons,

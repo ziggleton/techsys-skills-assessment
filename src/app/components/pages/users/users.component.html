@@ -1,11 +1,13 @@
-<div class="user-grid" [ngClass]="{ 'show-preview': canShowPreview }">
-  <div class="main">
-    <app-user-list [users]="users" [headers]="headers"></app-user-list>
-  </div>
-  <div class="aside">
-    <app-preview
-      *ngIf="canShowPreview"
-      [selectedItem]="selectedItem"
-    ></app-preview>
+<div class="user-container">
+  <div class="user-grid" [ngClass]="{ 'show-preview': canShowPreview }">
+    <div class="main">
+      <app-user-list [users]="users" [headers]="headers"></app-user-list>
+    </div>
+    <div class="aside">
+      <app-preview
+        *ngIf="canShowPreview"
+        [selectedItem]="selectedItem"
+      ></app-preview>
+    </div>
   </div>
 </div>
