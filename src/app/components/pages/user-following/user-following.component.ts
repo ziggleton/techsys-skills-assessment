@@ -11,7 +11,7 @@ export class UserFollowingComponent implements OnInit {
   private username: string | null = null;
   user: User | null = null;
   followingList: User[] = [];
-  kind: String | null = 'Aux-User';
+  kind: string = 'Aux-User';
   headers: Array<string> = ['profile image', 'id', 'username', 'user type'];
   constructor(
     private router: ActivatedRoute,
@@ -40,7 +40,7 @@ export class UserFollowingComponent implements OnInit {
     this.username = null;
     this.user = null;
     this.followingList = [];
-    this.kind = null;
+    this.kind = '';
     this.headers = [];
   }
 }

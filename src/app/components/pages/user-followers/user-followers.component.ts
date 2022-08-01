@@ -11,7 +11,7 @@ export class UserFollowersComponent implements OnInit {
   private username: string | null = null;
   user: User | null = null;
   followersList: User[] = [];
-  kind: String | null = 'Aux-User';
+  kind: string = 'Aux-User';
   headers: Array<string> = ['profile image', 'id', 'username', 'user type'];
   constructor(
     private router: ActivatedRoute,
@@ -35,12 +35,12 @@ export class UserFollowersComponent implements OnInit {
       });
     });
   }
-  
+
   ngOnDestroy(): void {
     this.username = null;
     this.user = null;
     this.followersList = [];
-    this.kind = null;
+    this.kind = '';
     this.headers = [];
   }
 }
