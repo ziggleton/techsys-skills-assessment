@@ -45,31 +45,27 @@ export default class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.ghUrl);
   }
-
-  getUser(username: string) {
+  getUser(username: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.ghUrl}/${username}`);
   }
-  
-  searchUser(query: string, page: number = 1) {
+  searchUser(query: string, page: number = 1): Observable<User[]> {
     return this.http.get<User[]>(
       `${this.ghUrl}/search/users?q=${query}&page=${page}&per_page=10`
     );
   }
-
-  getRepos(username: string) {
+  getRepos(username: string): Observable<Repo[]> {
     return this.http.get<Repo[]>(`${this.ghUrl}/${username}/repos`);
   }
-
-  getGists(username: string) {
+  getGists(username: string): Observable<Gist[]> {
     return this.http.get<Gist[]>(`${this.ghUrl}/${username}/gists`);
   }
-  getFollowers(username: string) {
+  getFollowers(username: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.ghUrl}/${username}/followers`);
   }
-  getFollowing(username: string) {
+  getFollowing(username: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.ghUrl}/${username}/following`);
   }
 }
