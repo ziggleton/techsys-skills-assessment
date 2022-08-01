@@ -52,6 +52,12 @@ export default class UsersService {
   getUser(username: string) {
     return this.http.get<User[]>(`${this.ghUrl}/${username}`);
   }
+  
+  searchUser(query: string, page: number = 1) {
+    return this.http.get<User[]>(
+      `${this.ghUrl}/search/users?q=${query}&page=${page}&per_page=10`
+    );
+  }
 
   getRepos(username: string) {
     return this.http.get<Repo[]>(`${this.ghUrl}/${username}/repos`);
